@@ -1,0 +1,21 @@
+<%= form_for( [ @wine, @logentry ] ) do |f| %>
+  <%= render 'shared/validation_errors', object: @logentry %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, autofocus: true, placeholder: 'Name' %><br />
+  <%= f.label :rating %>  
+  <% Logentry::STARS.each do |star| %>
+    <%= f.radio_button :rating, star %> <%= star %>
+  <% end %><br />
+  <%= f.label :location %>
+  <%= f.text_field :location %><br/>
+  <%= f.label :comments %><br/>
+  <%= f.text_area :comments %><br/>
+  <%= f.label :tasted_on %>
+  <%= f.date_select :tasted_on %><br/>
+  <p>
+    <%= f.submit %>
+    <%= link_to 'Cancel', wine_logentries_path(@wine), id: 'cancel_logentry' %>
+  </p>
+  
+<% end %>

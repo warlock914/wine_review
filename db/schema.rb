@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012024922) do
+ActiveRecord::Schema.define(version: 20141013074947) do
+
+  create_table "logentries", force: true do |t|
+    t.string   "name"
+    t.integer  "rating"
+    t.string   "location"
+    t.string   "comments"
+    t.datetime "tasted_on"
+    t.integer  "wine_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "logentries", ["wine_id"], name: "index_logentries_on_wine_id"
 
   create_table "wines", force: true do |t|
     t.string   "name"
