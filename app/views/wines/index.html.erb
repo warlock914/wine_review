@@ -1,10 +1,11 @@
 <h1>Wines</h1>
 <p>Available as of <%= @available_at %></p>
+<%= page_entries_info @wines %>
 <ol>
 <% @wines.each do |wine| %>
   <li>Name: <%= link_to(wine.name, wine) %>
       Winery: <%= wine.winery %>
       Varietal: <%= wine.varietal %></li>
 <% end %>
-<%= link_to 'New Wine', new_wine_path %>
 </ol>
+<%= paginate @wines %>
